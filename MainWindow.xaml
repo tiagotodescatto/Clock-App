@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Clock" Height="900" Width="1080">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Side Bar-->
+            <StackPanel Grid.Column="0">
+                <Button Content="Clock" Height="40" Click="ClockButtonClick"/>
+                <Button Content="Alarm" Height="40" Click="AlarmButtonClick"/>
+                <Button Content="Timer" Height="40" Click="TimerButtonClick"/>
+            </StackPanel>
+
+            <!--Main Grid-->
+            <Grid Grid.Column="1">
+                <!--Clock Page - Shows date and time-->
+                <Grid Name="ClockPage">
+                    <TextBlock Name="HourTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="100" Width="500"/>
+                    <TextBlock Name="DateTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="250" Margin="0,497,0,0"/>
+                </Grid>
+
+                <!--Alarm Page - -->
+                <Grid Name="AlarmPage">
+                    
+                </Grid>
+
+                <!--Timer Page - -->
+                <Grid Name="TimerPage">
+                    
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
