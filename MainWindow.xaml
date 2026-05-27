@@ -6,7 +6,25 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="Clock" Height="900" Width="1080">
-    <Grid>
+
+    <Window.Resources>
+        <Style x:Key="RoundedButton" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Name="MainGrid">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
@@ -14,28 +32,28 @@
             </Grid.ColumnDefinitions>
 
             <!--Side Bar-->
-            <StackPanel Grid.Column="0">
-                <Button Content="Clock" Height="40" Click="ClockButtonClick"/>
-                <Button Content="Alarm" Height="40" Click="AlarmButtonClick"/>
-                <Button Content="Timer" Height="40" Click="TimerButtonClick"/>
+            <StackPanel Grid.Column="0" Name="SideBar">
+                <Button Content="Clock" Style="{StaticResource RoundedButton}" Height="40" Click="ClockButtonClick" Name="SidebarClockButton"/>
+                <Button Content="Alarm" Style="{StaticResource RoundedButton}" Height="40" Click="AlarmButtonClick" Name="SidebarAlarmButton"/>
+                <Button Content="Timer" Style="{StaticResource RoundedButton}" Height="40" Click="TimerButtonClick" Name="SidebarTimerButton"/>
             </StackPanel>
 
             <!--Main Grid-->
             <Grid Grid.Column="1">
                 <!--Clock Page - Shows date and time-->
                 <Grid Name="ClockPage">
-                    <TextBlock Name="HourTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="100" Width="500"/>
-                    <TextBlock Name="DateTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="250" Margin="0,497,0,0"/>
+                    <TextBlock Name="HourTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Height="100" Width="500" Foreground="Black" FontSize="72" TextAlignment="Center"/>
+                    <TextBlock Name="DateTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Height="50" Width="250" Margin="0,492,0,0" Foreground="Black" FontSize="22" TextAlignment="Center"/>
                 </Grid>
 
                 <!--Alarm Page - -->
                 <Grid Name="AlarmPage">
-                    
+
                 </Grid>
 
                 <!--Timer Page - -->
                 <Grid Name="TimerPage">
-                    
+
                 </Grid>
             </Grid>
         </Grid>
